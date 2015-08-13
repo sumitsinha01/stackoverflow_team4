@@ -9,6 +9,8 @@ import java.util.ArrayList;
  *
  */
 public class BlogDTO implements Serializable{
+	
+	private String id;
 	private String title;
 	private String tags;
 	private String content;
@@ -61,6 +63,14 @@ public class BlogDTO implements Serializable{
 	 */
 	public void setTags(String tags) {
 		this.tags = tags;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 
