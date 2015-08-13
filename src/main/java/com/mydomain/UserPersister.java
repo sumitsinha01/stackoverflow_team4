@@ -35,10 +35,6 @@ class UserPersister implements Handler<RoutingContext> {
 				User u = dto.toModel();
 				Datastore dataStore = ServicesFactory.getMongoDB();
 				dataStore.save(u);
-				response.putHeader("Access-Control-Allow-Origin", "*");
-				response.putHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-				response.putHeader("Access-Control-Allow-Headers", "*");
-				response.putHeader("Access-Control-Allow-Headers", "Content-Type,Authorization,accept,x-requested-with"); 
 				response.setStatusCode(204).end("Data saved");
 			};
 		});

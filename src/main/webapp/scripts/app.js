@@ -153,6 +153,8 @@
 	app.controller('LoginController', function($http, $log, $scope, $location,
 			$rootScope) {
 		var controller = this;
+		$scope.user = new Object();
+		$scope.user.isCompany = true;
 		$scope.isLoadingCompanies = true;
 		$scope.registerSuccess = false;
 		$scope.registerNewUser = true;
@@ -168,10 +170,15 @@
 				});
 		$scope.login = function(user) {
 			$log.debug("Logging in user...");
-			$http.post("/Services/rest/user/auth", user).success(
+			$http.post("http://localhost:9090/Services/rest/user/auth", user).success(
 					function() {
 						$rootScope.loggedIn = true;
+						$rootScope.loggedInUser = user.userName;
+						$log.debug("User " + user.userName + " logged in");
 						$location.path("/");
+					}).error(function() {
+						$log.debug("User " + user.userName + "authentication Failed");
+						alert("User " + user.userName + "authentication Failed")
 					});
 		};
 		
