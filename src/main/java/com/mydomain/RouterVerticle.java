@@ -48,12 +48,6 @@ public class RouterVerticle extends AbstractVerticle {
 		//router.route("/Services/rest/user/auth").handler(basicAuthHandler);
 		router.route("/Services/rest/user/auth").handler(MyFormLoginHandler.create(ap));
 		
-	    
-		
-
-		
-
-		
 		/*
 		router.route("/private/*").handler(new Handler<RoutingContext>() {
 			@Override
@@ -68,6 +62,7 @@ public class RouterVerticle extends AbstractVerticle {
 
 		router.get("/services/users/:id").handler(new UserLoader());
 		router.post("/Services/rest/user/register").handler(new UserPersister());
+		router.post("/Services/rest/blogs").handler(new BlogPersister());
 		//router.post("/Services/rest/user/auth").handler(new LoginHandler());
 
 		server.requestHandler(router::accept).listen(9090);

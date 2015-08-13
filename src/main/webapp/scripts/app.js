@@ -255,7 +255,7 @@
 				$scope.blog={};
 				$scope.blog.content = 'Blog text here...';
 				$scope.saveBlog = function(blog){
-					$http.post("/Services/rest/blogs", blog).success(
+					$http.post("http://localhost:9090/Services/rest/blogs", blog).success(
 							function() {
 								$log.debug("Saved blog...");
 								$location.path("/");

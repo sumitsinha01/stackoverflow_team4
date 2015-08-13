@@ -52,12 +52,16 @@ public class MyFormLoginHandler implements FormLoginHandler {
 				e.printStackTrace();
 			}
 			User u = dto.toModel();
-	        Session session = context.session();
+	        
+	        
 	        JsonObject authInfo = new JsonObject().put("username", u.getUserName()).put("password", u.getPassword());
 	        authProvider.authenticate(authInfo, res -> {
 	          if (res.succeeded()) {
+	        	Session session = context.session();
 	            io.vertx.ext.auth.User user = res.result();
-	            context.setUser(user);
+	            System.out.println(user.principal() + " Printing principle");
+	            session.put("user", user);
+	            //context.setUser(user);
 	            System.out.println("Logging Success");
 	            req.response().setStatusCode(204).end("user Login success");
 //	            if (session != null) {
